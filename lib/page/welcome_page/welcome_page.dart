@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'components/body.dart';
@@ -12,9 +11,9 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   static const List inform = [
-    ['welcome_image.jpg', 'Text 1', 'Subtext 1', 'Support 1'],
-    ['welcome_image.jpg', 'Text 3', 'Subtext 3', 'Support 3'],
-    ['welcome_image.jpg', 'Text 3', 'Subtext 3', 'Support 3'],
+    ['welcome_one.png', 'Text 1', 'Subtext 1', 'Support 1'],
+    ['welcome_two.png', 'Text 2', 'Subtext 2', 'Support 2'],
+    ['welcome_three.png', 'Text 3', 'Subtext 3', 'Support 3'],
   ];
 
   @override
@@ -26,6 +25,7 @@ class _WelcomePageState extends State<WelcomePage> {
         itemBuilder: (_, index) {
           return Body(
             inform: inform[index],
+            index: index
           );
         },
       ),

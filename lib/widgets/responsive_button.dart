@@ -12,16 +12,23 @@ class ResponsiveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: 60,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: AppColors.mainColor,
-      ),
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+          elevation: 0,
+          primary: AppColors.mainColor,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          fixedSize: Size(width!, 60)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Icon(Icons.arrow_forward_sharp)],
+        children: isResponsive == true
+            ? [
+                const Text('Long text, very long'),
+                const SizedBox(width: 10),
+                const Icon(Icons.arrow_forward_sharp)
+              ]
+            : [const Icon(Icons.arrow_forward_sharp)],
       ),
     );
   }
