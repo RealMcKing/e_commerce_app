@@ -1,4 +1,5 @@
 
+import 'package:e_commerce_app/page/navpage/main_page.dart';
 import 'package:e_commerce_app/page/welcome_page/welcome_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
         ),
-        home: WelcomePage());
+        home: MainPage());
   }
 }

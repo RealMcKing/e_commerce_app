@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../colors.dart';
 
@@ -26,9 +27,12 @@ class ResponsiveButton extends StatelessWidget {
             ? [
                 const Text('Long text, very long'),
                 const SizedBox(width: 10),
-                const Icon(Icons.arrow_forward_sharp)
+                SvgPicture.asset('assets/arrow.svg'),
               ]
-            : [const Icon(Icons.arrow_forward_sharp)],
+            : [
+                SvgPicture.asset("assets/icons/arrow.svg",
+                  height: 24, width: 24, ),
+              ],
       ),
     );
   }
