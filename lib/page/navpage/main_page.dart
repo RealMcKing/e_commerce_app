@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/page/navpage/home_page.dart';
+import 'package:e_commerce_app/page/navpage/home_page/home_page.dart';
 import 'package:e_commerce_app/page/navpage/my_page.dart';
 import 'package:e_commerce_app/page/navpage/search_page.dart';
 import 'package:flutter/cupertino.dart';
