@@ -4,6 +4,7 @@ import '../nav_page/home_page/home_page.dart';
 import '../nav_page/my_page/my_page.dart';
 import '../nav_page/search_page/search_page.dart';
 import 'bar_item_page/bar_item_page.dart';
+import 'home_page/components/widgets/top_app_bar_widget.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -20,8 +21,9 @@ class _MainPageState extends State<MainPage> {
     const MyPage(),
   ];
   int currentIndex = 0;
-  void onTap(int index){
-    setState((){
+
+  void onTap(int index) {
+    setState(() {
       currentIndex = index;
     });
   }
@@ -29,12 +31,14 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(80), child: TopAppBarWidget()),
       backgroundColor: Colors.white,
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         unselectedFontSize: 0,
         selectedFontSize: 0,
-        type:  BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         onTap: onTap,
         currentIndex: currentIndex,
@@ -43,9 +47,9 @@ class _MainPageState extends State<MainPage> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         elevation: 0,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.apps_rounded), label: 'Home'),
+              icon: Icon(Icons.apps_rounded), label: 'Discover'),
           BottomNavigationBarItem(
               icon: Icon(Icons.bar_chart_rounded), label: 'Bar'),
           BottomNavigationBarItem(

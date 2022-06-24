@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TopAppBarWidget extends StatelessWidget {
@@ -13,7 +12,6 @@ class TopAppBarWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.menu_rounded, size: 30, color: Colors.black54),
           Expanded(child: Container()),
           Container(
             margin: const EdgeInsets.only(right: 20),

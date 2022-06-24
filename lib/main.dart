@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(primaryColor: AppColors.mainColor, ),
         initialRoute: '/',
 
-        home: const WelcomePage());
+        home: const DetailPage());
   }
 }
 

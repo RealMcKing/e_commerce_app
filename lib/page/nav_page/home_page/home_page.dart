@@ -1,11 +1,10 @@
 import 'package:e_commerce_app/colors.dart';
-import 'package:e_commerce_app/widgets/app_large_text.dart';
 import 'package:flutter/material.dart';
-
-import 'components/widgets/explore_text_widget.dart';
-import 'components/widgets/explorer_widget.dart';
+import 'components/widgets/circle_tab_indicator_widget.dart';
+import 'components/widgets/explore_button_widget.dart';
+import 'components/widgets/explore_widget.dart';
+import 'components/widgets/section_title_widget.dart';
 import 'components/widgets/tab_bar_view_widget.dart';
-import 'components/widgets/top_app_bar_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -30,16 +29,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TopAppBarWidget(),
-          const SizedBox(height: 40),
-          Container(
-              margin: const EdgeInsets.only(left: 20),
-              child: AppLargeText(text: 'Text 1')),
+          const SizedBox(height: 10),
+          SelectionTitleWidget( text: 'Discover'),
           const SizedBox(height: 30),
           Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
-              labelPadding: EdgeInsets.only(left: 20, right: 20),
+              labelPadding: const EdgeInsets.only(left: 20, right: 20),
               controller: tabController,
               labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,
@@ -91,37 +87,5 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
     );
-  }
-}
-
-class  CircleTabIndicator extends Decoration {
-  final Color color;
-  double radius;
-
-  CircleTabIndicator({required this.color, required this.radius});
-
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    // TODO: implement createBoxPainter
-    return _CirclePainted(color: color, radius: radius);
-  }
-}
-
-class _CirclePainted extends BoxPainter {
-  final Color color;
-  double radius;
-
-  _CirclePainted({required this.color, required this.radius});
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    Paint paint = Paint();
-    paint.color = color;
-    paint.isAntiAlias = true;
-
-    final Offset circleOffset = Offset(
-        configuration.size!.width / 2, configuration.size!.height - radius);
-
-    canvas.drawCircle(offset + circleOffset, radius, paint);
   }
 }
