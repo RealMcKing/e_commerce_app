@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../colors.dart';
-import '../../../../widgets/app_text.dart';
+import '../../../../../colors.dart';
+import '../../../../../widgets/app_text.dart';
+
+
 
 class ExploreTextWidget extends StatelessWidget {
   List<dynamic> item = [];

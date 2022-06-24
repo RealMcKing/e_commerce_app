@@ -1,9 +1,10 @@
+import 'package:e_commerce_app/page/welcome_page/components/widgets/indicator_widget.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../colors.dart';
 import '../../../widgets/app_large_text.dart';
 import '../../../widgets/app_text.dart';
-import '../../../widgets/responsive_button.dart';
+import 'widgets/button_widget.dart';
 
 class Body extends StatelessWidget {
   List<String> inform = [];
@@ -23,7 +24,7 @@ class Body extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage("assets/images/" + inform[0]),
+          image: AssetImage("assets/images/${inform[0]}"),
         ),
       ),
       child: Container(
@@ -38,31 +39,16 @@ class Body extends StatelessWidget {
                 AppText(text: inform[2], size: 30),
                 const SizedBox(height: 20),
                 SizedBox(
-                  width: 250,
-                  child: AppText(
-                      color: AppColors.textColor2, size: 14, text: inform[3]),
-                ),
+                    width: 250,
+                    child: AppText(
+                        color: AppColors.textColor2,
+                        size: 14,
+                        text: inform[3])),
                 const SizedBox(height: 40),
-                ResponsiveButton(
-                  width: 120,
-                )
+                const ButtonWidget()
               ],
             ),
-            Column(
-              children: List.generate(3, (indexDots) {
-                return Container(
-                  margin: EdgeInsets.only(bottom: 2),
-                  width: 8,
-                  height: index == indexDots ? 25 : 8,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: index == indexDots
-                        ? AppColors.mainColor
-                        : AppColors.mainColor.withOpacity(0.3),
-                  ),
-                );
-              }),
-            )
+            IndicatorWidget(index: index)
           ],
         ),
       ),

@@ -1,11 +1,11 @@
 import 'package:e_commerce_app/colors.dart';
-import 'package:e_commerce_app/page/navpage/home_page/widgets/explore_text_widget.dart';
-import 'package:e_commerce_app/page/navpage/home_page/widgets/explorer_widget.dart';
-import 'package:e_commerce_app/page/navpage/home_page/widgets/tab_bar_view_widget.dart';
-import 'package:e_commerce_app/page/navpage/home_page/widgets/top_app_bar_widget.dart';
 import 'package:e_commerce_app/widgets/app_large_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'components/widgets/explore_text_widget.dart';
+import 'components/widgets/explorer_widget.dart';
+import 'components/widgets/tab_bar_view_widget.dart';
+import 'components/widgets/top_app_bar_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 3, vsync: this);
+    TabController tabController = TabController(length: 3, vsync: this);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,14 +33,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           const TopAppBarWidget(),
           const SizedBox(height: 40),
           Container(
-              margin: EdgeInsets.only(left: 20),
+              margin: const EdgeInsets.only(left: 20),
               child: AppLargeText(text: 'Text 1')),
           const SizedBox(height: 30),
           Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
               labelPadding: EdgeInsets.only(left: 20, right: 20),
-              controller: _tabController,
+              controller: tabController,
               labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,
               isScrollable: true,
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 300,
             width: double.maxFinite,
             child: TabBarView(
-              controller: _tabController,
+              controller: tabController,
               children: [
                 ListView.builder(
                   itemCount: 3,
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 }
 
-class CircleTabIndicator extends Decoration {
+class  CircleTabIndicator extends Decoration {
   final Color color;
   double radius;
 

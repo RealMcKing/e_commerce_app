@@ -1,10 +1,9 @@
-import 'package:e_commerce_app/page/navpage/home_page/home_page.dart';
-import 'package:e_commerce_app/page/navpage/my_page.dart';
-import 'package:e_commerce_app/page/navpage/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'bar_item_page.dart';
+import '../nav_page/home_page/home_page.dart';
+import '../nav_page/my_page/my_page.dart';
+import '../nav_page/search_page/search_page.dart';
+import 'bar_item_page/bar_item_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -15,10 +14,10 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    HomePage(),
-    BarItemPage(),
-    SearchPage(),
-    MyPage(),
+    const HomePage(),
+    const BarItemPage(),
+    const SearchPage(),
+    const MyPage(),
   ];
   int currentIndex = 0;
   void onTap(int index){

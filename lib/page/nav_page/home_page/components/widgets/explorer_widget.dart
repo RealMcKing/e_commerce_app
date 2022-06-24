@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../colors.dart';
-import '../../../../widgets/app_large_text.dart';
-import '../../../../widgets/app_text.dart';
+import '../../../../../colors.dart';
+import '../../../../../widgets/app_large_text.dart';
+import '../../../../../widgets/app_text.dart';
 
 class ExplorerWidget extends StatelessWidget {
   const ExplorerWidget({Key? key}) : super(key: key);
