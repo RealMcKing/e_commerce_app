@@ -19,6 +19,6 @@ class MyApp extends StatelessWidget {
           primaryColor: AppColors.mainColor,
           fontFamily: 'Nunito',
         ),
-        home: const MainPage());
+        home: const DetailPage());
   }
 }
