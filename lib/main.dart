@@ -11,23 +11,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primaryColor: AppColors.mainColor, ),
-        initialRoute: '/',
-
-        home: const DetailPage());
+        theme: ThemeData(
+          primaryColor: AppColors.mainColor,
+          fontFamily: 'Nunito',
+        ),
+        home: const MainPage());
   }
 }
-
-//
-// routes: {
-// '/': (context) => MyApp(),
-// '/welcomePage': (context) => WelcomePage(),
-// '/mainNavPage': (context) => MainPage(),
-// '/detailPage': (context) => DetailPage(),
-// },

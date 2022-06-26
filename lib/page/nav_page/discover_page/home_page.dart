@@ -6,15 +6,15 @@ import 'components/widgets/explore_widget.dart';
 import 'components/widgets/section_title_widget.dart';
 import 'components/widgets/tab_bar_view_widget.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class DiscoverPage extends StatefulWidget {
+  const DiscoverPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DiscoverPage> createState() => _DiscoverPageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
-  List items = [
+class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMixin {
+  static const List items = [
     [Colors.red, Icons.apple_rounded, 'Clothes'],
     [Colors.green, Icons.class_rounded, 'Electronics'],
     [Colors.purple, Icons.bolt_rounded, 'Furniture'],
@@ -26,18 +26,20 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 3, vsync: this);
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 10),
           SelectionTitleWidget( text: 'Discover'),
-          const SizedBox(height: 30),
+          const SizedBox(height: 16),
           Align(
             alignment: Alignment.centerLeft,
             child: TabBar(
-              labelPadding: const EdgeInsets.only(left: 20, right: 20),
+              labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               controller: tabController,
               labelColor: Colors.black,
+              labelStyle: const TextStyle(fontSize: 16.0, fontFamily: 'Nunito',fontWeight: FontWeight.w700),
               unselectedLabelColor: Colors.grey,
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.label,
@@ -51,32 +53,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 20),
-            height: 300,
+            height: 290,
             width: double.maxFinite,
             child: TabBarView(
               controller: tabController,
               children: [
                 ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   itemCount: 3,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
                     return const TabBarViewWidget();
                   },
                 ),
-                Text('TextBar 2'),
-                Text('TextBar 3'),
+                const Text('TextBar 2'),
+                const Text('TextBar 3'),
               ],
             ),
           ),
           const SizedBox(height: 30),
           const ExplorerWidget(),
-          const SizedBox(height: 10),
-          Container(
+          const SizedBox(height: 12),
+          SizedBox(
             height: 100,
             width: double.maxFinite,
-            margin: const EdgeInsets.only(left: 20),
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemCount: 5,
               scrollDirection: Axis.horizontal,
               itemBuilder: (_, index) {

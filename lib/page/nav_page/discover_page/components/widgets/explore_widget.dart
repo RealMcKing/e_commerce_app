@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../colors.dart';
 import '../../../../../widgets/app_large_text.dart';
-import '../../../../../widgets/app_text.dart';
 
 class ExplorerWidget extends StatelessWidget {
   const ExplorerWidget({Key? key}) : super(key: key);
@@ -17,7 +16,8 @@ class ExplorerWidget extends StatelessWidget {
           AppLargeText(text: 'Explore text', size: 22),
           TextButton(
             onPressed: () {},
-            child: AppText(text: 'See All', color: AppColors.textColor1),
+            child: AppLargeText(
+                text: 'See all', color: AppColors.textColor1, size: 16),
           )
         ],
       ),

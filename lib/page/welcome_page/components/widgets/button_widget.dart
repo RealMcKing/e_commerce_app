@@ -23,11 +23,11 @@ class ButtonWidget extends StatelessWidget {
           primary: AppColors.mainColor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          fixedSize: const Size(120, 64)),
+          fixedSize: const Size(96, 52)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset("assets/icons/arrow.svg", height: 24, width: 24)
+          SvgPicture.asset("assets/icons/arrow.svg", height: 20, width: 20)
         ],
       ),
     );

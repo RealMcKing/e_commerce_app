@@ -44,7 +44,7 @@ class Body extends StatelessWidget {
                         color: AppColors.textColor2,
                         size: 14,
                         text: inform[3])),
-                const SizedBox(height: 40),
+                const SizedBox(height: 64),
                 const ButtonWidget()
               ],
             ),
