@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../colors.dart';
 
 class ButtonWidget extends StatelessWidget {
-
   const ButtonWidget({Key? key}) : super(key: key);
 
   @override

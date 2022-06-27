@@ -4,11 +4,12 @@ import '../../../../colors.dart';
 
 class IndicatorWidget extends StatelessWidget {
   int index;
+
   IndicatorWidget({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return             Column(
+    return Column(
       children: List.generate(3, (indexDots) {
         return Container(
           margin: const EdgeInsets.only(bottom: 2),

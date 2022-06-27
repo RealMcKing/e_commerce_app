@@ -13,7 +13,8 @@ class DiscoverPage extends StatefulWidget {
   State<DiscoverPage> createState() => _DiscoverPageState();
 }
 
-class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMixin {
+class _DiscoverPageState extends State<DiscoverPage>
+    with TickerProviderStateMixin {
   static const List items = [
     [Colors.red, Icons.apple_rounded, 'Clothes'],
     [Colors.green, Icons.class_rounded, 'Electronics'],
@@ -31,7 +32,7 @@ class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMix
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 10),
-          SelectionTitleWidget( text: 'Discover'),
+          SelectionTitleWidget(text: 'Discover'),
           const SizedBox(height: 16),
           Align(
             alignment: Alignment.centerLeft,
@@ -39,7 +40,10 @@ class _DiscoverPageState extends State<DiscoverPage> with TickerProviderStateMix
               labelPadding: const EdgeInsets.symmetric(horizontal: 20),
               controller: tabController,
               labelColor: Colors.black,
-              labelStyle: const TextStyle(fontSize: 16.0, fontFamily: 'Nunito',fontWeight: FontWeight.w700),
+              labelStyle: const TextStyle(
+                  fontSize: 16.0,
+                  fontFamily: 'Nunito',
+                  fontWeight: FontWeight.w700),
               unselectedLabelColor: Colors.grey,
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.label,

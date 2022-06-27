@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/page/nav_page/main_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -14,12 +13,12 @@ class ResponsiveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ElevatedButton(
-      onPressed: () {Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => MainPage()),
-      );
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MainPage()),
+        );
       },
       style: ElevatedButton.styleFrom(
           elevation: 0,

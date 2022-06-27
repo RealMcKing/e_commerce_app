@@ -5,16 +5,12 @@ import '../../../colors.dart';
 class LikeButtonWidget extends StatelessWidget {
   bool isLiked = false;
 
-  LikeButtonWidget(
-      {Key? key,
-      required this.isLiked})
-      : super(key: key);
+  LikeButtonWidget({Key? key, required this.isLiked}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-        onPressed: () {
-        },
+        onPressed: () {},
         style: OutlinedButton.styleFrom(
           backgroundColor: isLiked ? AppColors.mainColor : Colors.white,
           shape:

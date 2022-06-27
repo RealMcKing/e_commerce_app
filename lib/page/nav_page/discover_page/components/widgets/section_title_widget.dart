@@ -4,6 +4,7 @@ import '../../../../../widgets/app_large_text.dart';
 
 class SelectionTitleWidget extends StatelessWidget {
   String text;
+
   SelectionTitleWidget({Key? key, required this.text}) : super(key: key);
 
   @override
