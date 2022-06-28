@@ -1,10 +1,10 @@
-import 'package:e_commerce_app/colors.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce_app/page/detail_page/components/app_bar_widget.dart';
-import 'package:e_commerce_app/widgets/app_large_text.dart';
-import 'package:e_commerce_app/widgets/app_text.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+import '../../colors.dart';
+import '../../widgets/app_large_text.dart';
+import '../../widgets/app_text.dart';
 import 'components/buy_button_widget.dart';
 
 class DetailPage extends StatefulWidget {
@@ -15,237 +15,138 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  List img = [
+  final List<String> images = [
     'assets/images/welcome_one.png',
-    'assets/images/welcome_one.png',
-    'assets/images/welcome_one.png'
+    'assets/images/welcome_two.png',
+    'assets/images/welcome_three.png'
   ];
 
-  static const double _panelHeightClosed = 95.0;
-  late double _panelHeightOpen;
-
-  bool isLiked = false;
+  bool _isLiked = false;
 
   @override
   Widget build(BuildContext context) {
-    _panelHeightOpen = MediaQuery.of(context).size.height * 0.60;
-
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(80),
         child: LocalAppBarWidget(),
       ),
-      body: SlidingUpPanel(
-        maxHeight: _panelHeightOpen,
-        minHeight: _panelHeightClosed,
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(32.0), topRight: Radius.circular(32.0)),
-        panelBuilder: (sc) => _panel(sc),
-        body: Center(
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/welcome_one.png'),
-                  fit: BoxFit.cover),
-            ),
-          ),
-        ),
-      ),
+      body: _body(),
+      floatingActionButton: _floatingActionButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 
-  Widget _panel(ScrollController controller) {
-    return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: ListView(
-        controller: controller,
-        children: <Widget>[
-          const SizedBox(height: 12.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 30,
-                height: 5,
-                decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(12.0))),
+  Widget _body() {
+    return ListView(
+      physics: const BouncingScrollPhysics(),
+      children: <Widget>[
+        CarouselSlider.builder(
+          itemCount: images.length,
+          itemBuilder: (context, index, realIndex) {
+            final image = images[index];
+            return buildImage(image, index);
+          },
+          options: CarouselOptions(
+              height: MediaQuery.of(context).size.width,
+              enlargeStrategy: CenterPageEnlargeStrategy.height),
+        ),
+        const SizedBox(height: 12.0),
+        Container(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: AppColors.mainColor,
+                      minimumSize: Size.zero, // Set this
+                      padding: EdgeInsets.zero,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: const [
+                        Text(
+                          'Clothes',
+                          style: TextStyle(
+                              fontSize: 16, color: AppColors.mainColor),
+                        ),
+                      ],
+                    ),
+                  ),
+                  AppText(text: '0000201'),
+                ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width *0.6,
+                    child: Text(
+                      'Incredible Steel Bike',
+                      style: TextStyle(color: Colors.black54, fontSize: 24, ),maxLines: 3,
+                    ),
+                  ),
+                  AppLargeText(text: '\$ 38', color: AppColors.mainColor)
+                ],
+              ),
+              const SizedBox(height: 8),
+              AppLargeText(
+                text: 'Description',
+                color: Colors.black54,
+                size: 20,
+              ),
+              const SizedBox(height: 8),
+              AppText(
+                size: 16,
+                text:
+                    "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+              ),
+              const SizedBox(height: 100),
             ],
           ),
-
-          Stack(
-            children: [
-              Positioned(
-                child: Container(
-                  padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          AppLargeText(
-                              text: 'Incredible Steel Bike',
-                              color: Colors.black54),
-                          AppLargeText(
-                              text: '\$ 38', color: AppColors.mainColor)
-                        ],
-                      ),
-                      const SizedBox(height: 16),
-                      AppText(text: '0000201'),
-                      SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            children: [
-                              Text('Clothes'),
-                              SizedBox(height: 4),
-                              Icon(Icons.arrow_forward_ios_rounded)
-                            ],
-                          ),
-                        ),
-                      ),
-                      AppLargeText(text: 'Description'),
-                      AppText(
-                        text:
-                            "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-                      ),
-                      Row(
-                        children: [
-                          OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  isLiked = !isLiked;
-                                });
-                              },
-                              style: OutlinedButton.styleFrom(
-                                backgroundColor: isLiked
-                                    ? AppColors.mainColor
-                                    : Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0)),
-                                fixedSize: const Size(64, 64),
-                              ),
-                              child: isLiked
-                                  ? const Icon(Icons.favorite_outlined,
-                                      color: Colors.white)
-                                  : const Icon(Icons.favorite_border_outlined,
-                                      color: AppColors.textColor1)),
-                          const SizedBox(width: 10),
-                          BuyButtonWidget(
-                            width: MediaQuery.of(context).size.width - 114,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          )
-          //             const SizedBox(height: 10),
-          //             Row(
-          //               children: [
-          //                 const Icon(Icons.location_on_outlined,
-          //                     color: AppColors.mainColor),
-          //                 AppText(
-          //                   text: 'Location',
-          //                   color: AppColors.textColor1,
-          //                 )
-          //               ],
-          //             ),
-          //             const SizedBox(height: 25),
-          //             AppLargeText(
-          //               text: 'Text 2',
-          //               color: Colors.black.withOpacity(0.8),
-          //               size: 20,
-          //             ),
-          //             const SizedBox(height: 5),
-          //             AppText(text: 'SubText', color: AppColors.mainTextColor),
-          //             Wrap(
-          //               children: List.generate(5, (index) {
-          //                 return InkWell(
-          //                   onTap: () {
-          //                     setState(() {
-          //                       selectedIndex = index;
-          //                     });
-          //                   },
-          //                   child: Container(
-          //                     margin: const EdgeInsets.only(right: 10),
-          //                     child: AppButtonsWidget(
-          //                       size: 50,
-          //                       color: selectedIndex == index
-          //                           ? Colors.white
-          //                           : Colors.black,
-          //                       backgroundColor: selectedIndex == index
-          //                           ? Colors.black
-          //                           : AppColors.buttonBackground,
-          //                       borderColor: selectedIndex == index
-          //                           ? Colors.black
-          //                           : AppColors.buttonBackground,
-          //                       text: (index + 1).toString(),
-          //                       // isIcon: false,
-          //                     ),
-          //                   ),
-          //                 );
-          //               }),
-          //             ),
-          //             const SizedBox(height: 20),
-          //             AppLargeText(
-          //               text: 'Text 3',
-          //               color: Colors.black.withOpacity(0.8),
-          //               size: 20,
-          //             ),
-          //             const SizedBox(height: 10),
-          //             AppLargeText(
-          //               text: 'Subtext',
-          //               color: AppColors.mainTextColor,
-          //               size: 16,
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //     Positioned(
-          //       bottom: 20,
-          //       left: 20,
-          //       right: 20,
-          //       child: Row(
-          //         children: [
-          //           OutlinedButton(
-          //               onPressed: () {
-          //                 setState(() {
-          //                   isLiked = !isLiked;
-          //                 });
-          //               },
-          //               style: OutlinedButton.styleFrom(
-          //                 backgroundColor:
-          //                     isLiked ? AppColors.mainColor : Colors.white,
-          //                 shape: RoundedRectangleBorder(
-          //                     borderRadius: BorderRadius.circular(15.0)),
-          //                 fixedSize: const Size(64, 64),
-          //               ),
-          //               child: isLiked
-          //                   ? const Icon(Icons.favorite_outlined,
-          //                       color: Colors.white)
-          //                   : const Icon(Icons.favorite_border_outlined,
-          //                       color: AppColors.textColor1)),
-          //           const SizedBox(width: 10),
-          //           BuyButtonWidget(
-          //             width: MediaQuery.of(context).size.width - 114,
-          //           )
-          //         ],
-          //       ),
-          //     )
-          //   ],
-          // )
-        ],
-      ),
+        ),
+      ],
     );
+  }
+
+  Widget buildImage(String image, int index) => Container(
+        color: Colors.grey,
+        width: double.infinity,
+        child: Image.asset(
+          image,
+          fit: BoxFit.cover,
+        ),
+      );
+
+  Widget _floatingActionButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        OutlinedButton(
+            onPressed: () {},
+            style: OutlinedButton.styleFrom(
+              primary: AppColors.mainColor,
+              backgroundColor: _isLiked ? AppColors.mainColor : Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15.0)),
+              fixedSize: const Size(64, 64),
+            ),
+            child: _isLiked
+                ? const Icon(Icons.favorite_outlined, color: Colors.white)
+                : const Icon(Icons.favorite_border_outlined,
+                    color: AppColors.textColor1)),
+        const SizedBox(width: 10),
+        BuyButtonWidget(
+          width: MediaQuery.of(context).size.width - 114,
+        )
+      ],
+    );
+  }
+
+  void checkLikes() {
+    _isLiked = !_isLiked;
   }
 }

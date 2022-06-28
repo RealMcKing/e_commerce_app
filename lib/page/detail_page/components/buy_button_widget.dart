@@ -20,7 +20,7 @@ class BuyButtonWidget extends StatelessWidget {
           fixedSize: Size(width, 64)),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(
-          'Long text, very long',
+          'Buy now',
           style: TextStyle(color: Colors.white),
         ),
         const SizedBox(width: 10),
